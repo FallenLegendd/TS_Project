@@ -1,0 +1,119 @@
+.banner {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.banner-content {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.cta-button {
+  background: linear-gradient(135deg, #3b82f6, #6366f1);
+  color: white;
+  border: none;
+  padding: 0.8rem 2rem;
+  font-size: 1.1rem;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.cta-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  background: linear-gradient(135deg, #6366f1, #3b82f6);
+}
+
+.allPosts {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.onePost {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid #e5e7eb;
+}
+
+.onePost:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+.onePost p {
+  margin: 0.5rem 0;
+  color: #333;
+  line-height: 1.5;
+}
+
+.onePost p:first-child {
+  color: #6b7280;
+  font-size: 0.9rem;
+}
+
+.onePost p:nth-child(2) {
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin: 1rem 0;
+}
+
+.like {
+  background-color: #f43f5e;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.like:hover {
+  background-color: #e11d48;
+  transform: scale(1.05);
+}
+
+.like::before {
+  content: '❤️';
+}
+
+.tech-logos {
+  margin-top: 3rem;
+  text-align: center;
+  padding: 1rem;
+  border-top: 1px solid #e5e7eb;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.onePost {
+  animation: fadeIn 0.5s ease forwards;
+}
+
+.onePost:nth-child(1) { animation-delay: 0.1s; }
+.onePost:nth-child(2) { animation-delay: 0.2s; }
+.onePost:nth-child(3) { animation-delay: 0.3s; }
+.onePost:nth-child(4) { animation-delay: 0.4s; }
