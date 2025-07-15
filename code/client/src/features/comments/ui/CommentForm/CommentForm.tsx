@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import type { CreateCommentData } from '../../../../types';
+import type { CreateCommentData } from '@/types';
 import './CommentForm.css';
 
 interface CommentFormProps {

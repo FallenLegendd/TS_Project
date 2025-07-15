@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import type { User } from "../../../../types";
-import { UserValidator } from "../../../../entities/User.validator";
-import { UserApi } from "../../../../entities/UserApi";
-import { setAccessToken } from "../../../../shared/lib/axiosInstance";
+import type { User } from "@/types";
+import { UserValidator } from "@/entities/User.validator";
+import { UserApi } from "@/entities/UserApi";
+import { setAccessToken } from "@/shared/lib/axiosInstance";
 import "./SignInForm.css";
+import { Input } from "@/shared/lib/ui/Input";
+import { useAlerts } from "@/features/alert";
 
 interface SignInFormProps {
   setUser: (user: User | null) => void;
@@ -23,6 +25,7 @@ const INITIAL_INPUTS_DATA: SignInData = {
 export default function SignInForm({ setUser }: SignInFormProps) {
   const navigate = useNavigate();
   const [inputs, setInputs] = useState<SignInData>(INITIAL_INPUTS_DATA);
+  const { dispatch } = useAlerts();
 
   const onChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInputs((prev) => ({ ...prev, [event.target.name]: event.target.value }));
@@ -51,6 +54,7 @@ export default function SignInForm({ setUser }: SignInFormProps) {
         setAccessToken(response.data.accessToken);
         setInputs(INITIAL_INPUTS_DATA);
         navigate("/");
+        dispatch({ type: "SHOW_SUCCESS", payload: { message: "Вы успешно авторизовались" } });
       
     } catch (error: unknown) {
       const errorMessage =
@@ -62,17 +66,17 @@ export default function SignInForm({ setUser }: SignInFormProps) {
 
   return (
     <form onSubmit={onSubmitHandler} className="signin-form">
-      <input
-        placeholder="email"
+      <Input 
         type="email"
+        placeholder="email"
         name="email"
         required
         value={inputs.email}
         onChange={onChangeHandler}
       />
-      <input
-        placeholder="password"
+      <Input
         type="password"
+        placeholder="password"
         name="password"
         required
         value={inputs.password}

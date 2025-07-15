@@ -1,10 +1,10 @@
-import { axiosInstance } from "../shared/lib/axiosInstance";
+import { axiosInstance } from "@/shared/lib/axiosInstance";
 import type {
   Post,
   CreatePostData,
   UpdatePostData,
   ApiResponse,
-} from "../types";
+} from "@/types";
 
 export class PostApi {
   static async getAll(): Promise<ApiResponse<Post[]>> {

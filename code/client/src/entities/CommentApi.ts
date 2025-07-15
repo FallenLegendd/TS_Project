@@ -1,10 +1,10 @@
-import { axiosInstance } from "../shared/lib/axiosInstance";
+import { axiosInstance } from "@/shared/lib/axiosInstance";
 import type {
   Comment,
   CreateCommentData,
   UpdateCommentData,
   ApiResponse,
-} from "../types";
+} from "@/types";
 
 export class CommentApi {
   static async getAll(): Promise<ApiResponse<Comment[]>> {

@@ -1,5 +1,5 @@
-import type { User } from "../../types";
-import SignUpForm from "../../features/auth/ui/SignUpForm/SignUpForm";
+import type { User } from "@/types";
+import SignUpForm from "@/features/auth/ui/SignUpForm/SignUpForm";
 
 interface RegisterPageProps {
   setUser: (user: User | null) => void;

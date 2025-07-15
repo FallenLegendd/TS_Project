@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import type { Comment, User, CreateCommentData } from "../../../../types";
-import { CommentApi } from "../../../../entities/CommentApi";
+import type { Comment, User, CreateCommentData } from "@/types";
+import { CommentApi } from "@/entities/CommentApi";
 import { CommentForm } from "../CommentForm/CommentForm";
 import { CommentList } from "../CommentList/CommentList";
 import "./CommentsSection.css";

@@ -1,5 +1,5 @@
 import React from "react";
-import type { Comment, User } from "../../../../types";
+import type { Comment, User } from "@/types";
 import { CommentItem } from "../CommentItem/CommentItem";
 import "./CommentList.css";
 
