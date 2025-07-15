@@ -8,7 +8,7 @@ interface MyCabinetProps {
   post?: Post[];
 }
 
-export default function MyCabinet({ user, post = [] }: MyCabinetProps) {
+export default function MyCabinet({ user }: MyCabinetProps) {
   if (!user) {
     return <div>Пользователь не найден</div>;
   }

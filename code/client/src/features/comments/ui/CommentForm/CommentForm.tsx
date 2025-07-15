@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import type { CreateCommentData, User } from '../../../../types';
+import type { CreateCommentData } from '../../../../types';
 import './CommentForm.css';
 
 interface CommentFormProps {
@@ -32,7 +32,7 @@ export const CommentForm: React.FC<CommentFormProps> = ({
         className="comment-input"
         value={text}
         onChange={(e) => setText(e.target.value)}
-        placeholder="Напишите комментарий..."
+        placeholder="Сюда коммент..."
         rows={3}
         disabled={isLoading}
         required

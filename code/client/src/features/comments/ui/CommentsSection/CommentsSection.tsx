@@ -99,7 +99,7 @@ export const CommentsSection: React.FC<CommentsSectionProps> = ({
         />
       ) : (
         <div className="comment-login-prompt">
-          <p>Войдите в систему, чтобы оставить комментарий</p>
+          <p>Войди или зарегайся, чтобы оставить коммент</p>
         </div>
       )}
 
