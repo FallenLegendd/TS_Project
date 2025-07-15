@@ -2,6 +2,7 @@ import type { User, Post } from "@/types";
 import { PostApi } from "@/entities/PostApi";
 import "./MyCabinet.css";
 import { useEffect, useState } from "react";
+import { useNotifications } from "@/features/notification/hooks/useNotifications";
 import { useAlerts } from "@/features/alert";
 
 interface MyCabinetProps {
@@ -39,7 +40,7 @@ export default function MyCabinet({ user }: MyCabinetProps) {
     try {
       await PostApi.deleteById(id);
       setPosts(thisUsersPosts.filter(el => el.id !== id))
-      dispatch({ type: "SHOW_WARNING", payload: { message: "Пост успешно удален" } });
+      dispatch({ type: "SHOW_SUCCESS", payload: { message: "Пост успешно удален" } });
     } catch (error) {
       console.error("Ошибка при удалении поста:", error);
     }

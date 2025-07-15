@@ -54,3 +54,18 @@ const notificationReducer = (
         return state
   }
 };
+
+export const NotificationProvider = ({children}: { children: React.ReactNode }) => {
+    const [state, dispatch] = useReducer(notificationReducer, initialState)
+
+    const contextValue = {
+        notifications: state.notifications,
+        dispatch,
+    }
+
+    return (
+        <NotificationContext.Provider value={contextValue}>
+            {children}
+        </NotificationContext.Provider>
+    )
+}
