@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import type { NotificationType } from "../model";
 import { useNotifications } from "../hooks/useNotifications";
 import styles from './NotificationContainer.module.css'
-import { useAlerts } from "@/features/alert";
 
 
 
@@ -48,10 +47,10 @@ function NotificationItem({notification}: {notification: NotificationType}){
 
 
 export  function NotificationContainer() {
-  const { alerts } = useAlerts();
+  const { notifications } = useNotifications();
   return (
     <div className={styles.notificationContainer}>
-      {alerts.map((notification) => (
+      {notifications.map((notification) => (
         <NotificationItem key={notification.id} notification={notification} />
       ))}
     </div>

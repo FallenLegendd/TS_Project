@@ -6,7 +6,7 @@ import { CommentsSection } from "@/features/comments/ui/CommentsSection/Comments
 import "./MainPage.css";
 import { Button } from "@/shared/lib/ui/Button";
 import { Input } from "@/shared/lib/ui/Input";
-import { useAlerts } from "@/features/alert";
+import { useNotifications } from "@/features/notification";
 
 interface MainPageProps {
   user: User | null;
@@ -17,7 +17,7 @@ export default function MainPage({ user }: MainPageProps) {
   const [allPosts, setAllPosts] = useState<Post[]>([]);
   const [showForm, setShowForm] = useState(false);
   const [submit, setSubmit] = useState(false);
-  const { dispatch } = useAlerts();
+  const { dispatch } = useNotifications();
   const [newPost, setNewPost] = useState<CreatePostData>({
     image: "",
     text: "",
@@ -43,7 +43,7 @@ export default function MainPage({ user }: MainPageProps) {
     console.log(newPost);
     try {
       const response = await PostApi.create(newPost);
-      dispatch({ type: "SHOW_SUCCESS", payload: { message: "Пост успешно создан" } });
+      dispatch({ type: "", payload: { message: "Пост успешно создан" } });
       console.log("Post created:", response.data);
       setShowForm(false);
       setNewPost({
