@@ -1,5 +1,5 @@
-import { axiosInstance } from "../shared/lib/axiosInstance";
-import type { AuthResponse, ApiResponse } from "../types";
+import { axiosInstance } from "@/shared/lib/axiosInstance";
+import type { AuthResponse, ApiResponse } from "@/types";
 
 interface SignUpData {
   email: string;

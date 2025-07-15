@@ -1,5 +1,5 @@
-import type { User } from "../../types";
-import SignInForm from "../../features/auth/ui/SignInForm/SignInForm";
+import type { User } from "@/types";
+import SignInForm from "@/features/auth/ui/SignInForm/SignInForm";
 
 interface LoginPageProps {
   setUser: (user: User | null) => void;

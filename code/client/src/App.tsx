@@ -1,20 +1,23 @@
 import { Routes, Route } from "react-router-dom";
-import MainPage from "./pages/MainPage/MainPage";
 import Layout from "./app/Layout";
 import { useEffect, useState } from "react";
 import type { User, Post } from "./types";
 import { UserApi } from "./entities/UserApi";
 import { setAccessToken } from "./shared/lib/axiosInstance";
-import RegisterPage from "./pages/RegisterPage/RegisterPage";
-import LoginPage from "./pages/LoginPage/LoginPage";
-import UpdatePage from "./pages/UpdatePage/UpdatePage";
 import { PostApi } from "./entities/PostApi";
-import MyCabinet from "./pages/MyCabinet/MyCabinet";
+import { useAlerts } from "./features/alert";
+import {
+  MainPage,
+  RegisterPage,
+  LoginPage,
+  UpdatePage,
+  MyCabinet,
+} from "./pages";
 
 export function App() {
   const [user, setUser] = useState<User | null>(null);
   const [posts, setPosts] = useState<Post[]>([]);
-
+  const { dispatch } = useAlerts();
   async function getAllPosts() {
     try {
       const response = await PostApi.getAll();
@@ -40,6 +43,7 @@ export function App() {
       if (serverResponse.data) {
         setUser(serverResponse.data.user);
         setAccessToken(serverResponse.data.accessToken);
+        dispatch({ type: "SHOW_SUCCESS", payload: { message: "Вы успешно авторизовались" } });
       }
     });
   }, []);

@@ -1,7 +1,8 @@
 import { Outlet } from "react-router-dom";
-import type { User } from "../types";
-import Navigation from "../widgets/Navigation/Navigation";
-import Footer from "../widgets/Footer/Footer";
+import type { User } from "@/types";
+import Navigation from "@/widgets/Navigation/Navigation";
+import Footer from "@/widgets/Footer/Footer";
+import { AlertContainer } from "@/features/alert";
 
 interface LayoutProps {
   user: User | null;
@@ -12,6 +13,7 @@ export default function Layout({ user, setUser }: LayoutProps) {
   return (
     <div className="app">
       <Navigation user={user} setUser={setUser} />
+      <AlertContainer />
       <main className="main">
         <Outlet />
       </main>

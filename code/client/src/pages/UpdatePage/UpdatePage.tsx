@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import type { Post } from "../../types";
-import { PostApi } from "../../entities/PostApi";
+import type { Post } from "@/types";
+import { PostApi } from "@/entities/PostApi";
 import "./UpdatePage.css";
 
 export default function UpdatePage() {

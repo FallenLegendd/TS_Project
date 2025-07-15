@@ -1,7 +1,7 @@
-import { UserApi } from "../../entities/UserApi";
-import { setAccessToken } from "../../shared/lib/axiosInstance";
+import { UserApi } from "@/entities/UserApi";
+import { setAccessToken } from "@/shared/lib/axiosInstance";
 import { NavLink, useNavigate } from "react-router-dom";
-import type { User } from "../../types";
+import type { User } from "@/types";
 import "./Navigation.css";
 
 interface NavigationProps {

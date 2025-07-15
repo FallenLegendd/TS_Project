@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import type { Post, User, CreatePostData } from "../../types";
-import { PostApi } from "../../entities/PostApi";
-import { CommentsSection } from "../../features/comments/ui/CommentsSection/CommentsSection";
+import type { Post, User, CreatePostData } from "@/types";
+import { PostApi } from "@/entities/PostApi";
+import { CommentsSection } from "@/features/comments/ui/CommentsSection/CommentsSection";
 import "./MainPage.css";
+import { Button } from "@/shared/lib/ui/Button";
+import { Input } from "@/shared/lib/ui/Input";
+import { useAlerts } from "@/features/alert";
 
 interface MainPageProps {
   user: User | null;
@@ -14,6 +17,7 @@ export default function MainPage({ user }: MainPageProps) {
   const [allPosts, setAllPosts] = useState<Post[]>([]);
   const [showForm, setShowForm] = useState(false);
   const [submit, setSubmit] = useState(false);
+  const { dispatch } = useAlerts();
   const [newPost, setNewPost] = useState<CreatePostData>({
     image: "",
     text: "",
@@ -39,7 +43,7 @@ export default function MainPage({ user }: MainPageProps) {
     console.log(newPost);
     try {
       const response = await PostApi.create(newPost);
-
+      dispatch({ type: "SHOW_SUCCESS", payload: { message: "Пост успешно создан" } });
       console.log("Post created:", response.data);
       setShowForm(false);
       setNewPost({
@@ -47,7 +51,6 @@ export default function MainPage({ user }: MainPageProps) {
         text: "",
         likeCount: 0,
       });
-      // Обновляем список постов
       getAllPosts();
     } catch (err) {
       console.error("Error creating post:", err);
@@ -94,7 +97,7 @@ export default function MainPage({ user }: MainPageProps) {
         {showForm === true ? (
           <div>
             <form onSubmit={handleSubmit}>
-              <input
+              <Input 
                 type="text"
                 name="image"
                 value={newPost.image}
@@ -102,7 +105,7 @@ export default function MainPage({ user }: MainPageProps) {
                 required
                 placeholder="Ссылка на картинку"
               />
-              <input
+              <Input
                 type="text"
                 name="text"
                 value={newPost.text}
@@ -110,19 +113,25 @@ export default function MainPage({ user }: MainPageProps) {
                 required
                 placeholder="text"
               />
-              <button type="submit" disabled={submit}>
+              <Button
+                variant="danger"
+                size="small"
+                type="submit"
+                disabled={submit}
+              >
                 {submit ? "Создание..." : "Создать"}
-              </button>
+              </Button>
             </form>
-
-            <button onClick={() => setShowForm(false)}>Скрыть форму</button>
+            <Button variant="secondary" size="small" onClick={() => setShowForm(false)}>
+              Скрыть форму
+            </Button>
           </div>
         ) : (
           <div></div>
         )}
-        <button className="cta-button" onClick={() => handleShowForm()}>
+        <Button variant="primary" size="medium" onClick={() => handleShowForm()}>
           Создать пост
-        </button>
+        </Button>
       </div>
       <div className="allPosts">
         {allPosts.map((post) => (

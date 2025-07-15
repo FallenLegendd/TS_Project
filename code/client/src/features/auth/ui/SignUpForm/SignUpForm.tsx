@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import type { User } from "../../../../types";
-import { UserValidator } from "../../../../entities/User.validator";
-import { UserApi } from "../../../../entities/UserApi";
-import { setAccessToken } from "../../../../shared/lib/axiosInstance";
+import type { User } from "@/types";
+import { UserValidator } from "@/entities/User.validator";
+import { UserApi } from "@/entities/UserApi";
+import { setAccessToken } from "@/shared/lib/axiosInstance";
 import "./SignUpForm.css";
 
 interface SignUpFormProps {

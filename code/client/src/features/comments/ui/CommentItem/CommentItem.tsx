@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import type { Comment, User } from "../../../../types";
+import type { Comment, User } from "@/types";
 import "./CommentItem.css";
 
 interface CommentItemProps {
